@@ -5,8 +5,8 @@ import { apiImage } from '../../constants/apiConstant'
 const HomeOffline = () => {
   return (
     <>
-    <div className='w-screen bg-black'>
-      <img src={`${apiImage}/logo.png`} alt="Logo Spotify" className='w-full h-28 object-contain py-2' />
+    <div className='bg-black' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+      <img src={`${apiImage}/logo.png`} alt="Logo Kigo"  width="200" height="200" />
     </div>
     <Outlet/>
     </>
