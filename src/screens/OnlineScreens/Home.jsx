@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { fecthCompetences } from '../redux/competence/competenceSlice';
-import { selectCompetencesData } from '../redux/competence/competenceSelector';
+import { fecthCompetences } from '../../redux/competence/competenceSlice';
+import { selectCompetencesData } from '../../redux/competence/competenceSelector';
 import { useDispatch, useSelector } from 'react-redux'
 
 const Home = () => {
