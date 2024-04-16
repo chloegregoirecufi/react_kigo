@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { axios } from 'axios';
+import axios from "axios";
+import { api } from "../../constants/apiConstant";
 
 const slice = createSlice({
     name: 'competences',
