@@ -5,7 +5,7 @@ import {AiOutlineHome} from 'react-icons/ai';
 import { FiSettings } from 'react-icons/fi';
 
 //1 pour la gestion des albums
-export const dataAlbumNav = [
+export const dataHomeNav = [
     {title: 'Accueil', path:'/', icon: AiOutlineHome},
     // {title: 'Rechercher', path:'/search', icon: AiOutlineSearch},
     // {title: 'Bibliothèque', path:'/library', icon: BiLibrary}
@@ -16,6 +16,8 @@ export const dataAlbumNav = [
 export const dataUserNav = [
     {title: 'Mon compte', path:'/account/:id', icon:FiSettings} 
 ];
+
+
 
 //on récupère le chemin de notre logo
 export const imgLogo = `${apiImage}/logo.png`;
