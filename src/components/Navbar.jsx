@@ -35,7 +35,7 @@ const Navbar = () => {
 //                     const confirmLogout = window.confirm('Voulez-vous vraiment vous déconnecter ?')
 //                     if(confirmLogout) handleLogout();
 //                 }}
-//                 className='w-full flex p-3 items-center justify-start font-medium text-sm text-white hover:bg-green_06'
+//                 className='w-full flex p-3 items-center justify-start font-medium text-sm text-whitel hover:bg-green_06'
 //                 >
 //                     <FiLogOut className='w-6 h-6 mr-2' />
 //                     deconnexion
@@ -48,7 +48,7 @@ const Navbar = () => {
 //                     const confirmLogout = window.confirm('Voulez-vous vraiment vous décnnecter ?')
 //                     if(confirmLogout) handleLogout();
 //                 }}
-//                 className='w-full flex p-3 items-center justify-start font-medium text-sm text-white hover:bg-green_06'
+//                 className='w-full flex p-3 items-center justify-start font-medium text-sm text-whitel hover:bg-green_06'
 //                 >
 //                     <FiLogOut className='w-6 h-6 mr-2' />
 //                     deconnexion

@@ -1,12 +1,12 @@
 import React from 'react'
-import { Audio } from 'react-loader-spinner'
+import { Circles } from 'react-loader-spinner'
 
 const ButtonLoader = () => {
   return (
     <Circles
     height="80"
     width="80"
-    color="#4fa94d"
+    color="#f0c777"
     ariaLabel="circles-loading"
     wrapperStyle={{}}
     wrapperClass=""

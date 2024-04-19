@@ -15,7 +15,7 @@ const OnlineRouteur = createBrowserRouter([
         //on declare les routes avec leur vue
         children: [
             {
-                path:"/home",
+                path:"/",
                 element: <Home/>
             },
             //route pour navbar {

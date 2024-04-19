@@ -8,12 +8,10 @@ const AuthContext = createContext({
     email: '',
     lastname:'',
     firstname:'',
-    filiere:'',
     setUserId: () => {},
     setEmail: () => {},
     setLastname: () => {},
     setFirstname: () => {},
-    setFiliere: () => {},
     signIn: async () => {},
     signOut: async () => {},
 });
@@ -21,10 +19,9 @@ const AuthContext = createContext({
 //on définit toute la mécanique de notre context
 const AuthContextProvider = ({children}) => {
     const [userId, setUserId] = useState('');
-    const[email, setEmail] = useState('');
-    const[lastname, setLastname] = useState('');
-    const[firstname, setFirstname] = useState('');
-    const[filiere, setFiliere] = useState('');
+    const [email, setEmail] = useState('');
+    const [lastname, setLastname] = useState('');
+    const [firstname, setFirstname] = useState('');
 
     const signIn = async (user) => {
         try {
@@ -32,7 +29,6 @@ const AuthContextProvider = ({children}) => {
             setEmail(user.email)
             setLastname(user.lastname)
             setFirstname(user.firstname)
-            setFiliere(user.filiere)
             localStorage.setItem(USER_INFOS, JSON.stringify(user))
         } catch (error) {
             throw new Error(`Erreur lors de la connexion : ${error}`)
@@ -45,7 +41,6 @@ const AuthContextProvider = ({children}) => {
             setEmail('')
             setLastname('')
             setFirstname('')
-            setFiliere('')
             localStorage.removeItem(USER_INFOS)
         } catch (error) {
             throw new Error(`Erreur lors de la connexion : ${error}`)
@@ -57,12 +52,10 @@ const AuthContextProvider = ({children}) => {
         lastname,
         firstname,
         email,
-        filiere,
         setUserId,
         setEmail,
         setLastname,
         setFirstname,
-        setFiliere,
         signOut,
         signIn
     }

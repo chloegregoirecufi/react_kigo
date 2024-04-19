@@ -26,9 +26,9 @@ const App = () => {
   const navigate = useNavigate();
 
  
-  useEffect(() => {
-    fetchUser();
-  }, [userInfo])
+  // useEffect(() => {
+  //   fetchUser();
+  // }, [userInfo])
 
 
 
@@ -36,7 +36,7 @@ const App = () => {
     <div className='relative flex'>
       <Navbar />
       <div className='flex-1 flex flex-col bg-gradient-to-b from-black to-[rgba(18,18,18,1)]'>
-            <div className='flex-1 h-fit pb-40 text-black'>
+            <div className='flex-1 h-fit pb-40 bg-whiteb text-orange'>
               <Outlet />
             </div>
       </div>

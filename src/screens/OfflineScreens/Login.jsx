@@ -28,16 +28,18 @@ const navigate = useNavigate();
       if(response.data.email){
         const user = {
           userId: response.data.id,
-          nickname: response.data.nickname,
+          firstname: response.data.firstname,
+          lastname: response.data.lastname,
           email: response.data.email,
         }
+        console.log(user);
         try {
           signIn(user);
           setIsLoading(false);
           navigate('/');
         } catch (error) {
           setIsLoading(false);
-          console.log(`Erreur lor de le creation de session ${error}`);
+          console.log(`Erreur lors de le creation de session ${error}`);
         }
       }else{
         setIsLoading(false);
@@ -45,14 +47,14 @@ const navigate = useNavigate();
       }
     }).catch((error)=> {
       setIsLoading(false);
-      console.log(`Erreur lors de l'enregistrmeet de l'user: ${error}`);
+      console.log(`Erreur lors de l'enregistrement de l'user: ${error}`);
     })//then le serveur renvoi dedans et si il ne recoit rien ça part dans le catch
   }
 
 
   return (
-    <div className='flex flex-1 flex-col h-screen justify-start items-center bg-black'>
-      <h2 className='text-black font-bold text-xl py-5'>Me connecter</h2>
+    <div className='flex flex-1 flex-col h-screen justify-start items-center bg-gradient-to-b from-green to-orange'>
+      <h2 className='text-whitel font-bold text-xl py-5'>Me connecter</h2>
       <div className='text-red-600 font-bold mb-4'>{error}</div>
       <form onSubmit={handleSubmit} className='max-w-md mx-auto'>
         {/*input pour mail */}
@@ -60,10 +62,10 @@ const navigate = useNavigate();
         {/*input pour password */}
           <CustomInput state={password} label="Mon mot de passe" type="password" callable={(event)=> setPassword(event.target.value)}/> 
 
-        <p className='text-white'> Vous n'avez pas de <Link to='/register' className='text-white font-bold'>compte</Link> ?</p>
+        <p className='text-whitel'> Vous n'avez pas de <Link to='/register' className='text-whitel font-bold'>compte</Link> ?</p>
         <div className='flex items-center justify-center pt-5'>
           { isLoading ? <ButtonLoader /> :
-            <button type='submit' className='bg-green hover:bg-grenn_top text-white font-bold py-2 px-4 rounded'>
+            <button type='submit' className='bg-orange text-whitel font-bold py-2 px-4 rounded'>
             Me connecter
           </button>}
           </div>

@@ -13,8 +13,9 @@ const Register = () => {
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [filiere, setFiliere] = useState('');
+  const [filiere, setFiliere] = useState('0');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   //on recupere la methode signIn du context d'auth
   const {signIn} = useAuthContext()
   //on récupère le hook de navigation
@@ -23,6 +24,10 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault() //empeche le fonctionnement par default du form
     console.log('enregistrer',firstname,lastname,email,password,filiere);
+    if(filiere == '0') {
+      setError('Veuillez choisir votre filière')
+      return
+    }
      setIsLoading(true);
      axios.post(`${apiRoot}/register`, {
          firstname, lastname, email, password, filiere
@@ -33,12 +38,12 @@ const Register = () => {
            firstname: response.data.firstname,
            lastname: response.data.lastname,
            email: response.data.email,
-           filiere: response.data.filiere,
          }
+         console.log('User', user)
          try {
            signIn(user);
            setIsLoading(false);
-           navigate('/home');
+           navigate('/');
          } catch (error) {
            setIsLoading(false);
            console.log(`Erreur lors de le creation de session ${error}`);
@@ -55,8 +60,9 @@ const Register = () => {
 
 
   return (
-    <div className='flex flex-1 flex-col h-screen justify-center items-center bg-black'>
-      <form onSubmit={handleSubmit} className='max-w-md mx-auto'>
+    <div className='flex flex-1 flex-col h-screen items-center bg-gradient-to-b from-orange to-green'>
+      {error && <div className='text-whitel font-bold'>{error}</div>}
+      <form onSubmit={handleSubmit} className='max-w-md mx-auto mt-1'>
         {/*input pour Lastname */}
           <CustomInput state={lastname} label="Mon nom" type="text" callable={(event)=> setLastname(event.target.value)}/> 
         {/*input pour FirstName */}
@@ -68,10 +74,10 @@ const Register = () => {
         {/*input pour password */}
           <CustomList  label="Ma section"  callable={(event)=> setFiliere(event.target.value)}/>
 
-        <p className='text-white'> Vous avez déjà un <Link to='/' className='text-white font-bold'>compte</Link> ?</p>
-        <div className='flex items-center justify-center pt-5'>
+        <p className='text-whitel '> Vous avez déjà un <Link to='/' className='text-whitel font-bold '>compte</Link> ?</p>
+        <div className='flex items-center justify-center pt-7 pb-20 '>
           { isLoading ? <ButtonLoader /> :
-            <button type='submit' className='bg-green hover:bg-grenn_top text-white font-bold py-2 px-4 rounded'>
+            <button type='submit' className='bg-orange text-whitel font-bold py-2 px-4 rounded justify-center'>
             S'enregistrer
           </button>}
           </div>

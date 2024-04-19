@@ -6,7 +6,7 @@ import { FiSettings } from 'react-icons/fi';
 
 //1 pour la gestion des albums
 export const dataHomeNav = [
-    {title: 'Accueil', path:'/', icon: AiOutlineHome},
+    {title: 'Accueil', path:'/home', icon: AiOutlineHome},
     // {title: 'Rechercher', path:'/search', icon: AiOutlineSearch},
     // {title: 'Bibliothèque', path:'/library', icon: BiLibrary}
 ];
