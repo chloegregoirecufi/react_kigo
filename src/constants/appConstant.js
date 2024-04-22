@@ -4,18 +4,17 @@ import { apiImage } from "./apiConstant";
 import {AiOutlineHome} from 'react-icons/ai';
 import { FiSettings } from 'react-icons/fi';
 
-//1 pour la gestion des albums
+//1 pour la gestion de la nav
 export const dataHomeNav = [
-    {title: 'Accueil', path:'/home', icon: AiOutlineHome},
-    // {title: 'Rechercher', path:'/search', icon: AiOutlineSearch},
-    // {title: 'Bibliothèque', path:'/library', icon: BiLibrary}
+    {title: 'Accueil', path:'/home'},
+    {title: 'projet', path:'/projet'},
 ];
 
 //on construit un 2ème tableau pour notre navbar
 //2 pour les options user
-export const dataUserNav = [
-    {title: 'Mon compte', path:'/account/:id', icon:FiSettings} 
-];
+// export const dataUserNav = [
+//     {title: 'Mon compte', path:'/profil/:id', icon:FiSettings} 
+// ];
 
 
 

@@ -3,6 +3,8 @@ import { fecthCompetences } from '../../redux/competence/competenceSlice';
 import { selectCompetencesData } from '../../redux/competence/competenceSelector';
 import { useDispatch, useSelector } from 'react-redux'
 
+
+
 const Home = () => {
     //toute la mécanique
     //constante qui recupere le hook de react-redux
@@ -18,11 +20,16 @@ const Home = () => {
 
     //on récupère notre selector
     const {competences, loading} = useSelector(selectCompetencesData);
-    console.log('COMPETENCE', competences['hydra:member']);
+    // console.log('COMPETENCE', competences['hydra:member']);
 
     return(
         //rendu HTML
-        <div>Home</div>
+        <div className='bg-whithb h-screen '>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <img src='image/logo.png' alt="Logo Kigo"  width="200" height="200"  />
+            </div>
+        </div>
+
     )
 }
 

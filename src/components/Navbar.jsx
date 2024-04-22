@@ -1,62 +1,46 @@
 import React, { useState } from 'react'
-// import { dataAlbumNav, dataUserNav, imgLogo, styleIcon } from '../constants/appConstant'
-// import NavLinks from './Navlinks'
-// import { useAuthContext } from '../contexts/AuthContext'
-// import { useNavigate } from 'react-router-dom'
-// import { FiLogOut } from 'react-icons/fi'
+import { useAuthContext } from '../contexts/AuthContext'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Projet from '../screens/OnlineScreens/Projet';
+import Profil from '../screens/OnlineScreens/Profil';
+
 
 
 const Navbar = () => {
-//     const [mobileMenu, isMobilMenu] = useState(false);
-//     //on recup l'id de l'user
-//     const { userId, signOut } = useAuthContext();
-//     //on recupère le hook de navigation 
-//     const navigate = useNavigate();
+     //on recup l'id de l'user
+     const { userId, signOut } = useAuthContext();
+    //on recupère le hook de navigation 
+     const navigate = useNavigate();
 
-//     //on créer une méthode de déconnexion 
-//     const handleLogout = () => {
-//         signOut()
-//         navigate('/')
-//     }
+     //on créer une méthode de déconnexion 
+     const handleLogout = () => {
+         signOut()
+         navigate('/')
+     }
 
 
-//   return (
-//     <>
-//     {/* navbar pour la ue au dessus de 768px */}
-//         <div className='bottom-navbar'>
-//             <div>
-//             <img src={imgLogo} alt="Logo Spotify" className='w-full h-14 object-contain' />
-//             <NavLinks data={dataAlbumNav} marginTop={'mt-10'}/>
-//             <NavLinks data={dataUserNav} marginTop={'mt-5'} userId={userId}/>
-//             </div>
-//             {/*ajout du btn de déconnexion */}
-//             <div className='mt-5'>
-//                 <button onClick={()=>{
-//                     const confirmLogout = window.confirm('Voulez-vous vraiment vous déconnecter ?')
-//                     if(confirmLogout) handleLogout();
-//                 }}
-//                 className='w-full flex p-3 items-center justify-start font-medium text-sm text-whitel hover:bg-green_06'
-//                 >
-//                     <FiLogOut className='w-6 h-6 mr-2' />
-//                     deconnexion
-//                 </button>
-//             </div>
-//         </div>
-//             {/*ajout du btn de déconnexion */}
-//             <div className='mt-5'>
-//                 <button onClick={()=>{
-//                     const confirmLogout = window.confirm('Voulez-vous vraiment vous décnnecter ?')
-//                     if(confirmLogout) handleLogout();
-//                 }}
-//                 className='w-full flex p-3 items-center justify-start font-medium text-sm text-whitel hover:bg-green_06'
-//                 >
-//                     <FiLogOut className='w-6 h-6 mr-2' />
-//                     deconnexion
-//                 </button>
-//             </div>
-//     </>
+   return (
+     <>
+    {/* navbar pour la vue au dessus de 768px */}
+    
+        <nav className="fixed bottom-0 w-full bg-orange text-whitel text-center py-2 rounded-tl-lg rounded-tr-lg">
+            <div className='flex items-center justify-evenly'> 
+            <Link to={`/`} > 
+            <img src="/image/home.png" alt="logo accueil" />
+            </Link>
+            <Link to={`/projet`}>
+            <img src="/image/friends.png" alt="logo amies" />  
+            </Link>
+            <Link to={`/profil`} >
+            <img src="/image/profile.png" alt="logo profil" />
+            </Link>
+            </div>
+        </nav>
 
-//     )
+      </>
+
+      )
  }
 
  export default Navbar;
