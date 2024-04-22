@@ -12,6 +12,7 @@ export default {
         orangeo: 'rgba(249,79, 13, 0.7)',
         whitel: 'rgba(250, 243, 221, 0.9)',
         whiteb: 'rgba(249,249,249,1)',
+        whitebox: 'rgba(250, 243, 221, 1)',          
       },
       
 

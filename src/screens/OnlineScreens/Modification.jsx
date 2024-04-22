@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CustomInput from '../../components/CustomInput'
 import axios from 'axios';
@@ -6,13 +6,29 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import ButtonLoader from '../../components/Loader/ButtonLoader';
 import { apiRoot } from '../../constants/apiConstant';
 import CustomList from '../../components/CustomList';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from '../../redux/user/userSlice';
+import { selectUserData } from '../../redux/user/userSelector';
+import { USER_INFOS } from '../../constants/appConstant';
+import { setCompetences } from '../../redux/competence/competenceSlice';
 
-const Register = () => {
+const Modification = () => {
+  const userId = JSON.parse(localStorage.getItem(USER_INFOS)).userId
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUser(userId))
+  }, [])
 
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  //on recupère notre selector 
+  const {user, loading} = useSelector(selectUserData);
+
+
+  const [firstname, setFirstname] = useState(user.firstname?? '');
+  const [lastname, setLastname] = useState(user.lastname?? '');
+  const [description, setDescription] = useState(user.description?? '');
+  const [competence, setCompetence] = useState(user.competence?? '');
+  const [email, setEmail] = useState(user.email?? '');
+  const [password, setPassword] = useState(user.password?? '');
   const [filiere, setFiliere] = useState('0');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -21,6 +37,13 @@ const Register = () => {
   //on récupère le hook de navigation
   const navigate = useNavigate();
 
+  
+
+  
+
+  
+
+console.log('user', user);
   const handleSubmit = (event) => {
     event.preventDefault() //empeche le fonctionnement par default du form
     console.log('enregistrer',firstname,lastname,email,password,filiere);
@@ -29,8 +52,8 @@ const Register = () => {
       return
     }
      setIsLoading(true);
-     axios.post(`${apiRoot}/register`, {
-         firstname, lastname, email, password, filiere
+     axios.patch(`${apiRoot}/users/${userId}`, {
+         firstname, lastname, email, password, filiere, description, competence
      }).then((response)=>{
        if(response.data.email){
          const user = {
@@ -38,12 +61,16 @@ const Register = () => {
            firstname: response.data.firstname,
            lastname: response.data.lastname,
            email: response.data.email,
+           filiere: response.data.filiere,
+           description: response.data.description,
+           competence: response.data.competence,
+
          }
          console.log('User', user)
          try {
            signIn(user);
            setIsLoading(false);
-           navigate('/');
+           navigate('/profil');
          } catch (error) {
            setIsLoading(false);
            console.log(`Erreur lors de le creation de session ${error}`);
@@ -58,33 +85,31 @@ const Register = () => {
      })//then le serveur renvoi dedans et si il ne recoit rien ça part dans le catch
   }
 
-
   return (
-    <div className='flex flex-1 flex-col h-screen items-center bg-gradient-to-b from-orange to-green'>
-      {error && <div className='text-whitel font-bold'>{error}</div>}
-      <form onSubmit={handleSubmit} className='max-w-md mx-auto mt-1'>
+    <div className='bg-gradient-to-b from-orange to-whitel h-screen '>
+        <div className='h-40 w-full z-0 flex justify-center items-center '>
+            <img src="/image/user-setting.png" alt="image user setting" className='size-16'/>
+        </div>
+        <h1 className='text-center font-bold tracking-wide text-whitel'>Mes information personnelles</h1>
         {/*input pour Lastname */}
           <CustomInput state={lastname} label="Mon nom" type="text" callable={(event)=> setLastname(event.target.value)}/> 
         {/*input pour FirstName */}
           <CustomInput state={firstname} label="Mon prénom" type="text" callable={(event)=> setFirstname(event.target.value)}/>
         {/*input pour mail */}
           <CustomInput state={email} label="Mon email" type="email" callable={(event)=> setEmail(event.target.value)}/> 
-        {/*input pour password */}
-          <CustomInput state={password} label="Mon mot de passe" type="password" callable={(event)=> setPassword(event.target.value)}/>
+        {/*input pour déscritpion */}
+        <CustomInput label="Descritpion" type="text" callable={(event)=> setDescription(event.target.value)}/>
         {/*input pour filiere */}
-          <CustomList  label="Ma section"  callable={(event)=> setFiliere(event.target.value)}/>
+        <CustomList label="Ma section" callable={(event)=> setFiliere(event.target.value)}/>
 
-        <p className='text-whitel '> Vous avez déjà un <Link to='/' className='text-whitel font-bold '>compte</Link> ?</p>
-        <div className='flex items-center justify-center pt-7 pb-20 '>
-          { isLoading ? <ButtonLoader /> :
-            <button type='submit' className='bg-orange text-whitel font-bold py-2 px-4 rounded justify-center'>
-            S'enregistrer
-          </button>}
-          </div>
-      </form>
+
+        
+        <div className='flex justify-center m-4'>
+        { isLoading ? <ButtonLoader /> :
+        <button className='border-2 shadow-lg border-orange bg-white rounded text-center p-1 flex'>Enregistrer</button>}
+        </div>
     </div>
-    
   )
 }
 
-export default Register
+export default Modification

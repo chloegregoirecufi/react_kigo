@@ -16,10 +16,10 @@ const CustomList = ({label, callable}) => {
     const filiere = filieres['hydra:member'];
     
   return (
-    <div className='mb-3'>
+    <div className='m-3'>
     <label className='block text-whitel font-bold mb-2'>{label}</label>
     <div>
-    	<select onChange={callable} className='shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline mb-5'>
+    	<select onChange={callable} className='shadow appearance-none border-orange rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline mb-5'>
         <option value="0">choisir une filière</option>
             {filiere && filiere.map((item, index)=>(
               <>

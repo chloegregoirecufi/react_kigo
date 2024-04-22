@@ -4,6 +4,7 @@ import ErrorPage from "../screens/ErrorScreens/ErrorPage";
 import Home from "../screens/OnlineScreens/Home";
 import Profil from "../screens/OnlineScreens/Profil";
 import Projet from "../screens/OnlineScreens/Projet";
+import Modification from "../screens/OnlineScreens/Modification";
 // import Account from "../screens/OnlineScreens/Account";
 
 const OnlineRouteur = createBrowserRouter([
@@ -29,6 +30,12 @@ const OnlineRouteur = createBrowserRouter([
             {
                  path:"/profil",
                  element: <Profil/>
+            },
+
+            //route pour modifier ses infos personnelles
+            {
+                path:"/modification",
+                element: <Modification/>
             },
             
         ]

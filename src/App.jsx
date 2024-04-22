@@ -5,7 +5,6 @@ import {useNavigate } from 'react-router-dom'
 import { useAuthContext } from './contexts/AuthContext.jsx'
 import { USER_INFOS } from './constants/appConstant'
 import { checkUser } from './services/userService'
-import Profil from './screens/OnlineScreens/Profil.jsx'
 
 const App = () => {
 

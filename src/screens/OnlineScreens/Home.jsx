@@ -23,7 +23,6 @@ const Home = () => {
     // console.log('COMPETENCE', competences['hydra:member']);
 
     return(
-        //rendu HTML
         <div className='bg-whithb h-screen '>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <img src='image/logo.png' alt="Logo Kigo"  width="200" height="200"  />
