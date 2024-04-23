@@ -23,7 +23,7 @@ const filiereSlice = createSlice({
 export const {setLoading, setFilieres} = filiereSlice.actions;
 
 //methode qui recupère les données en BDD
-export const fecthCompetences = () => async dispatch => {
+export const fetchFiliere = () => async dispatch => {
     try {
         dispatch(setLoading(true));
         //on stocke les données de la requete à l'API

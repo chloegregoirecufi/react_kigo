@@ -39,10 +39,10 @@ const Profil = ({dataUser}) => {
             </div>
             <h1 className='flex justify-center mt-2 font-bold text-xl capitalize'>{user.lastname} {user.firstname}</h1>
               <div className='flex justify-center'>
-                <p className=' bg-whitebox rounded-lg inline-block py-1 px-2'>tada</p>
+                <p className=' bg-whitebox rounded-lg inline-block py-1 px-2'>{user.filiere}</p>
               </div>
               <div className='flex justify-center m-4'>
-                <p className='border-2 shadow-lg border-orange bg-white inline-block py-1 px-2 rounded text-center'>étudiant en Audiovisule je suis passioné par la création de clip musicaux</p>
+                <p className='border-2 shadow-lg border-orange bg-white inline-block py-1 px-2 rounded text-center'>saluuuuuuuuuuuuuuut</p>
               </div>
               <div className='flex justify-center m-4'>
                 <p className='border-2 shadow-lg border-orange bg-gradient-to-b from-whitebox via-whitebox to-orangeo inline-block py-1 px-2 rounded'>Réseaux:

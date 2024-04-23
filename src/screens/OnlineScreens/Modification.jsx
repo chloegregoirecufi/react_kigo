@@ -11,6 +11,7 @@ import { fetchUser } from '../../redux/user/userSlice';
 import { selectUserData } from '../../redux/user/userSelector';
 import { USER_INFOS } from '../../constants/appConstant';
 import { setCompetences } from '../../redux/competence/competenceSlice';
+import CustomCheckbox from '../../components/CustomCheckbox';
 
 const Modification = () => {
   const userId = JSON.parse(localStorage.getItem(USER_INFOS)).userId
@@ -37,23 +38,17 @@ const Modification = () => {
   //on récupère le hook de navigation
   const navigate = useNavigate();
 
-  
-
-  
-
-  
-
-console.log('user', user);
+  console.log('user', user);
   const handleSubmit = (event) => {
     event.preventDefault() //empeche le fonctionnement par default du form
-    console.log('enregistrer',firstname,lastname,email,password,filiere);
+    console.log('enregistrer',firstname,lastname,email,password,filiere,competence);
     if(filiere == '0') {
       setError('Veuillez choisir votre filière')
       return
     }
      setIsLoading(true);
      axios.patch(`${apiRoot}/users/${userId}`, {
-         firstname, lastname, email, password, filiere, description, competence
+         firstname, lastname, email, filiere, description, competence
      }).then((response)=>{
        if(response.data.email){
          const user = {
@@ -73,7 +68,7 @@ console.log('user', user);
            navigate('/profil');
          } catch (error) {
            setIsLoading(false);
-           console.log(`Erreur lors de le creation de session ${error}`);
+           console.log(`Erreur lors de le creation des modifications ${error}`);
          }
         }else{
          setIsLoading(false);
@@ -81,13 +76,14 @@ console.log('user', user);
        }
      }).catch((error)=> {
        setIsLoading(false);
-       console.log(`Erreur lors de l'enregistrement de l'user: ${error}`);
+       console.log(`Erreur lors de l'enregistrement des données: ${error}`);
      })//then le serveur renvoi dedans et si il ne recoit rien ça part dans le catch
   }
 
   return (
     <div className='bg-gradient-to-b from-orange to-whitel h-screen '>
-        <div className='h-40 w-full z-0 flex justify-center items-center '>
+      <form onSubmit={handleSubmit}>
+        <div className='h-28 w-full z-0 flex justify-center items-center '>
             <img src="/image/user-setting.png" alt="image user setting" className='size-16'/>
         </div>
         <h1 className='text-center font-bold tracking-wide text-whitel'>Mes information personnelles</h1>
@@ -98,9 +94,11 @@ console.log('user', user);
         {/*input pour mail */}
           <CustomInput state={email} label="Mon email" type="email" callable={(event)=> setEmail(event.target.value)}/> 
         {/*input pour déscritpion */}
-        <CustomInput label="Descritpion" type="text" callable={(event)=> setDescription(event.target.value)}/>
+        <CustomInput label="Description" type="text" callable={(event)=> setDescription(event.target.value)}/>
         {/*input pour filiere */}
         <CustomList label="Ma section" callable={(event)=> setFiliere(event.target.value)}/>
+        {/*input pour compétence */}
+        <CustomCheckbox label="Mes compétences" callable={(event)=> setCompetence(event.target.value)}/>
 
 
         
@@ -108,6 +106,7 @@ console.log('user', user);
         { isLoading ? <ButtonLoader /> :
         <button className='border-2 shadow-lg border-orange bg-white rounded text-center p-1 flex'>Enregistrer</button>}
         </div>
+        </form>
     </div>
   )
 }
