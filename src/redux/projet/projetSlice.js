@@ -16,7 +16,7 @@ const projetSlice = createSlice({
             state.loading = action.payload;
         },
         setProjet: (state, action) => {
-            state.projet = action.payload;
+            state.projet = action.payload['hydra:member'];
         }
     }
 });
@@ -32,7 +32,6 @@ export const fetchProjet = () => async dispatch => {
         //stock données de la requête à l'API
         const response = await axios.get(`${api}/posts?page=1`);
 
-        console.log('response', response.data);
         //set les données reçu dans notre slice grace au setProjet
         dispatch(setProjet(response.data));
         dispatch(setLoading(false));

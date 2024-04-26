@@ -17,15 +17,17 @@ const ProjetCard = () => {
     const {projet, loading} = useSelector(selectProjetData);
     //on recupère le tableau de données de selectPosts
     //const projets = projet_response['hydra:member'];
+
+
+
     
-    console.log('projet', projet);
-    const projet_response = projet["hydra:member"];
+    console.log('===================== projet', projet);
 
   return (
     loading ? <PageLoader />:
     <div className='m-3'>
     <label className='flex justify-center text-xl text-orange font-bold mb-2'>Mes projets</label>
-            {projet_response && projet_response.map((item, index)=>{
+            {projet && projet.map((item, index)=>{
               console.log('item', item);
               return(
               <>
