@@ -11,9 +11,9 @@ const CustomList = ({label, callable}) => {
     
 
     //on recupère les infos du slice filiere
-    const {filieres} = useSelector(selectFilieresData);
+    const {filieres_response} = useSelector(selectFilieresData);
     //on recupère le tableau de donnée de selectFilieres
-    const filiere = filieres['hydra:member'];
+    const filieres = filieres_response['hydra:member'];
     
   return (
     <div className='m-3'>
@@ -21,7 +21,7 @@ const CustomList = ({label, callable}) => {
     <div>
     	<select onChange={callable} className='shadow appearance-none border-orange rounded w-full py-2 px-3 text-black leading-tight '>
         <option value="0">choisir une filière</option>
-            {filiere && filiere.map((item, index)=>(
+            {filieres_response && filieres_response.map((item, index)=>(
               <>
                 <option key={index} value={item.id}>{item.label}</option>
               </>

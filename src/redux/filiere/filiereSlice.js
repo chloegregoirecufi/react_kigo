@@ -28,7 +28,7 @@ export const fetchFiliere = () => async dispatch => {
         dispatch(setLoading(true));
         //on stocke les données de la requete à l'API
         const response = await axios.get(`${api}/filieres?page=1`);
-        //set les données recu dans notre slice grace à setCompetences
+        //set les données recu dans notre slice grace à setFilieres
         dispatch(setFilieres(response.data));
         dispatch(setLoading(false));
     } catch (error) {

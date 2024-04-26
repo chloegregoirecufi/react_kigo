@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchFiliere } from '../../redux/filiere/filiereSlice';
 import { selectFilieresData } from '../../redux/filiere/filiereSelector';
+import ProjetCard from '../../components/ProjetCard';
 
 
 
@@ -26,16 +27,14 @@ const Home = ({label, callable}) => {
                 <img src='image/logo.png' alt="Logo Kigo"  width="200" height="200"  />
             </div>
             <div className='ml-3'>
-                <label className='block font-bold mb-2'>{label}</label>
-                <div> 
+            <div className="scroll-smooth"> 
                     {filiere && filiere.map((item, index) => (
                     <div key={index} className={` bg-whiteb border border-orange rounded-lg inline-block py-1 px-2 mr-3 mb-2`}>
-                    <label htmlFor={`filiere_${index}`} className='text-orange'>{item.label}</label>
-                  </div>
+                        <label htmlFor={`filiere_${index}`} className='text-orange'>{item.label}</label>
+                    </div>
                 ))}
-
-        </div>
-        </div>
+                </div>
+            </div>
         </div>
     )}
 
